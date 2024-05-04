@@ -8,10 +8,22 @@ const spy = (implementation) => {
       return implementation(...rest);
     }
   };
-  fn.numberOfCalls = 0;
-  fn.calls = [];
+  _defineProperties(fn);
 
   return fn;
+};
+
+const _defineProperties = (obj) => {
+  Object.defineProperties(obj, {
+    numberOfCalls: {
+      value: 0,
+      writable: true,
+    },
+    calls: {
+      value: [],
+      writable: true,
+    },
+  });
 };
 
 export { spy };
